@@ -8,11 +8,10 @@ namespace lab1 {
         private const int linesCount = 100000000;
 
         public static void Main(string[] args) {
-            Console.Write(new string('-', Console.BufferWidth));
-            Console.WriteLine("Normal");
+            Console.WriteLine("Classical Algorithm:");
             ClassicalAlgorithm();
-            Console.Write(new string('-', Console.BufferWidth));
-            Console.WriteLine("Modified");
+            Console.WriteLine("-------------------------------");
+            Console.WriteLine("Modified Algorithm:");
             ModifiedAlgorithm();
         }
 
@@ -21,7 +20,7 @@ namespace lab1 {
 
             fileGenerator = new TextFileGenerator();
             fileGenerator.GenerateBySize(fileName, 10);
-            Console.WriteLine("Generated");
+            Console.WriteLine("Text file was Generated");
             fileSorter = new TextFileSorter();
             Stopwatch stopWatch = Stopwatch.StartNew();
             fileSorter.Sort(fileName, out string sortedFileName);
@@ -34,14 +33,14 @@ namespace lab1 {
 
             fileGenerator = new BinaryFileGenerator();
             fileGenerator.GenerateByLinesCount(fileName, linesCount);
-            Console.WriteLine("Generated");
+            Console.WriteLine("Binary file was generated");
             fileSorter = new BinaryFileSorter();
             Stopwatch stopWatch = Stopwatch.StartNew();
             ((BinaryFileSorter)fileSorter).SortParts(fileName, "sorted.dat", linesCount, linesCount / 8);
             fileSorter.Sort("sorted.dat", out string sortedFileName);
             stopWatch.Stop();
             Console.WriteLine($"Sorted, file: {sortedFileName}, seconds: {stopWatch.Elapsed.TotalSeconds}");
-            //FileWorker.ShowContent(sortedFileName, 10);
+            FileWorker.ShowContent(sortedFileName, 100);
         }
     }
 }
