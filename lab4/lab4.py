@@ -127,8 +127,8 @@ class Graph:
             for row in self.matrix:
                 for element in row:
                     element.run_time()
-            if i % 20 == 0:
-                print(self.get_best_len())
+
+            print(self.get_best_len())
         return self.get_best_len()
 
     def get_best(self):
@@ -158,3 +158,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
